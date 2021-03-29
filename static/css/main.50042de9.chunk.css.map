@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,YAEE,aACF,CAEA,YAEE,SACF","file":"main.50042de9.chunk.css","sourcesContent":["a,\r\na:visited {\r\n  color: inherit;\r\n}\r\n\r\ntr th,\r\ntr td {\r\n  width: 50%;\r\n}\r\n"]}
