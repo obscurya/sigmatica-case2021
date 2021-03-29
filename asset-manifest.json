@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/sigmatica-case2021/static/css/main.50042de9.chunk.css",
-    "main.js": "/sigmatica-case2021/static/js/main.59ab5b7b.chunk.js",
-    "main.js.map": "/sigmatica-case2021/static/js/main.59ab5b7b.chunk.js.map",
+    "main.js": "/sigmatica-case2021/static/js/main.02d1e820.chunk.js",
+    "main.js.map": "/sigmatica-case2021/static/js/main.02d1e820.chunk.js.map",
     "runtime-main.js": "/sigmatica-case2021/static/js/runtime-main.1f6320a8.js",
     "runtime-main.js.map": "/sigmatica-case2021/static/js/runtime-main.1f6320a8.js.map",
     "static/css/2.a08a9460.chunk.css": "/sigmatica-case2021/static/css/2.a08a9460.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.a08a9460.chunk.css",
     "static/js/2.c02875dd.chunk.js",
     "static/css/main.50042de9.chunk.css",
-    "static/js/main.59ab5b7b.chunk.js"
+    "static/js/main.02d1e820.chunk.js"
   ]
 }
