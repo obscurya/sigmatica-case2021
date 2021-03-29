@@ -1,0 +1,268 @@
+{
+  "process": {
+    "id": "1",
+    "subprocesses": [
+      {
+        "id": "2"
+      },
+      {
+        "id": "3",
+        "subprocesses": [
+          {
+            "id": "6"
+          },
+          {
+            "id": "7"
+          },
+          {
+            "id": "8"
+          }
+        ]
+      },
+      {
+        "id": "4"
+      },
+      {
+        "id": "5"
+      }
+    ]
+  },
+  "processes": [
+    {
+      "id": "1",
+      "name": "Производственная деятельность",
+      "description": "",
+      "resources": ["1", "2"],
+      "products": ["3", "4"]
+    },
+    {
+      "id": "2",
+      "name": "Управление производством",
+      "description": "Комплекс мероприятий, который направлен на обеспечение бесперебойной и эффективной работы любого предприятия вне зависимости от формы собственности и производственных мощностей.",
+      "resources": ["9", "10"],
+      "products": ["4", "5"],
+      "employee": "1",
+      "schedule": {
+        "days": [1, 2, 3],
+        "timeStart": "10:00",
+        "timeEnd": "15:00"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Производство продукции",
+      "description": "",
+      "resources": ["1", "5", "8"],
+      "products": ["6", "7"]
+    },
+    {
+      "id": "4",
+      "name": "Техническое обслуживание и ремонт",
+      "description": "Комплекс технологических операций и организационных действий по поддержанию работоспособности или исправности объекта при его использовании по назначению, ожидании, хранении и транспортировании. ТОиР могут быть как плановыми (регламентированными), так и неплановыми.",
+      "resources": ["2", "7"],
+      "products": ["8", "9"],
+      "employee": "2",
+      "schedule": {
+        "days": [1, 3, 5],
+        "timeStart": "12:00",
+        "timeEnd": "18:15"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Контроль качества продукции",
+      "description": "Тщательная проверка соответствия параметров производимых товаров установленным требованиям. Подобная проверка нужна, чтобы не допустить появления брака, а также избежать производства изделий, не соответствующих существующим нормам.",
+      "resources": ["6"],
+      "products": ["3", "10"],
+      "employee": "3",
+      "schedule": {
+        "days": [1, 5],
+        "timeStart": "9:00",
+        "timeEnd": "13:00"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Переработка сырья",
+      "description": "Обработка металлических изделий для создания сборочных структур, отдельных частей и больших конструкции.",
+      "resources": ["1", "8", "5"],
+      "products": ["11", "7"],
+      "employee": "4",
+      "schedule": {
+        "days": [1, 2, 3, 4, 5],
+        "timeStart": "10:00",
+        "timeEnd": "17:00"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Изготовление деталей",
+      "description": "Изделия из металла создаются на предприятиях из обработанного сырья, это может быть проволока, листы, трубы, ленты или слитки. Для того чтобы получить заготовку или готовый продукт, материалу нужно придать необходимую форму. Изготовление деталей из металла проводится по заданному эскизу, которому должно полностью соответствовать готовое изделие по всем параметрам.",
+      "resources": ["11", "8", "5"],
+      "products": ["12", "7"],
+      "employee": "5",
+      "schedule": {
+        "days": [1, 4],
+        "timeStart": "15:30",
+        "timeEnd": "18:00"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Сборка продукции",
+      "description": "Образование соединений составных частей изделия. Технологический процесс сборки заключается в последовательном соединении и фиксации всех деталей, составляющих ту или иную сборочную единицу в целях получения изделия, отвечающего установленным на него техническим требованиям.",
+      "resources": ["12", "8", "5"],
+      "products": ["6", "7"],
+      "employee": "6",
+      "schedule": {
+        "days": [2, 4],
+        "timeStart": "11:00",
+        "timeEnd": "14:45"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Сырьевой ресурс"
+    },
+    {
+      "id": "2",
+      "name": "Ресурсы для обслуживания и ремонта оборудования"
+    },
+    {
+      "id": "3",
+      "name": "Готовая продукция"
+    },
+    {
+      "id": "4",
+      "name": "Отчет о деятельности производства"
+    },
+    {
+      "id": "5",
+      "name": "Приоритезирование работ"
+    },
+    {
+      "id": "6",
+      "name": "Продукция, не прошедшая контроль качества"
+    },
+    {
+      "id": "7",
+      "name": "Неисправное оборудование"
+    },
+    {
+      "id": "8",
+      "name": "Исправное оборудование"
+    },
+    {
+      "id": "9",
+      "name": "Отчет о техническом обслуживании и ремонте"
+    },
+    {
+      "id": "10",
+      "name": "Количественные и качественные показатели продукции"
+    },
+    {
+      "id": "11",
+      "name": "Полуфабрикат"
+    },
+    {
+      "id": "12",
+      "name": "Детали"
+    }
+  ],
+  "employees": [
+    {
+      "name": "Иванов Иван Иванович",
+      "gender": "male",
+      "specialty": "1",
+      "password": "qwerty1"
+    },
+    {
+      "name": "Кабанов Соломон Владимирович",
+      "gender": "male",
+      "specialty": "2",
+      "password": "qwerty2"
+    },
+    {
+      "name": "Никифоров Венедикт Дамирович",
+      "gender": "male",
+      "specialty": "3",
+      "password": "qwerty3"
+    },
+    {
+      "name": "Лазарева Валентина Тимофеевна",
+      "gender": "female",
+      "specialty": "4",
+      "password": "qwerty4"
+    },
+    {
+      "name": "Котова Данна Лукьяновна",
+      "gender": "female",
+      "specialty": "5",
+      "password": "qwerty5"
+    },
+    {
+      "name": "Козлов Демид Валентинович",
+      "gender": "male",
+      "specialty": "6",
+      "password": "qwerty6"
+    }
+  ],
+  "specialties": [
+    {
+      "id": "1",
+      "name": "Начальник производственного отдела",
+      "description": "Организует и регулирует работу производственных процессов, складов, составляет план работ.",
+      "instruction": "Начальник производственного отдела исполняет следующие должностные обязанности:\n1. Руководство работой производственных складов.\n2. Обеспечение участие отдела в проведении инвентаризации незавершенного производства.\n3. Осуществление методического руководства работой производственно-диспетчерских подразделений предприятия.\n4. Руководство работой по оперативному регулированию, с использованием средств вычислительной техники, коммуникаций и связи, хода производства, по обеспечению ритмичного выпуска продукции в соответствии с планом производства и договорами поставок.\n5. Осуществление руководства разработкой производственных программ и календарных графиков выпуска продукции по предприятию и его подразделениям, их корректировкой в течение планируемого периода, разработкой и внедрением нормативов для оперативно-производственного планирования."
+    },
+    {
+      "id": "2",
+      "name": "Начальник службы технического обслуживания и ремонта",
+      "description": "desc2",
+      "instruction": "Для выполнения возложенных на него функций начальник ремонтного цеха обязан:\n1. Осуществлять руководство производственно-хозяйственной деятельностью цеха по ремонту и техническому обслуживанию оборудования, зданий и сооружений предприятия.\n2. Принимать участие в разработке перспективных и текущих планов ремонта основных производственных средств предприятия.\n3. Возглавлять работу по внедрению систем комплексного регламентированного обслуживания, обеспечивающих своевременную наладку и ремонт оборудования, по реализации мер, направленных на улучшение эксплуатации оборудования.\n4. Обеспечивать ритмичную работу цеха и выполнение  ремонтных заданий в установленные сроки, повышение производительности труда ремонтных рабочих, снижение стоимости ремонта при высоком  качестве ремонтных работ, эффективное использование основных и оборотных средств.\n5. Организовывать разработку и доведение до исполнителей (начальников участков, мастеров, бригадиров) плановых заданий и графиков ремонта, контроль за проведением ремонтных работ и испытаний оборудования, за соблюдением правил эксплуатации, технического обслуживания и надзора за ним."
+    },
+    {
+      "id": "3",
+      "name": "Начальник отдела контроля качества",
+      "description": "desc3",
+      "instruction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer augue elit, convallis eget turpis vel, tempus fringilla lorem. Maecenas dictum elementum nisl, sit amet congue augue fringilla ac. Curabitur blandit maximus tellus, ut dignissim nunc volutpat sed. Aenean nec volutpat est. Sed condimentum libero non augue tincidunt venenatis. Mauris sit amet commodo enim. Proin laoreet dignissim dolor, sit amet accumsan mi suscipit id. Quisque quis egestas diam. Ut gravida sagittis tortor, eu convallis dui elementum vitae. Fusce at augue sed ligula vehicula accumsan in vel purus.\nProin et nibh risus. Sed condimentum varius urna eget viverra. Suspendisse elit turpis, pulvinar vel felis in, auctor sollicitudin neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer quis justo non libero facilisis euismod. Fusce in pulvinar mauris, at tincidunt arcu. In ligula purus, sagittis ac felis sed, scelerisque semper nunc. Morbi vitae pulvinar leo. Integer vestibulum vitae ante pretium iaculis.\nNullam ullamcorper nisl lacus, non vestibulum ligula consequat ut. Suspendisse a viverra elit, eu aliquet ipsum. Sed laoreet, arcu eu consectetur dignissim, arcu magna porttitor dui, in hendrerit tortor lorem vel felis. Cras congue sit amet nisi imperdiet consequat. Pellentesque sit amet nisl mauris. Vivamus et leo id diam tincidunt suscipit at ullamcorper justo. Quisque semper dui eu urna blandit eleifend. Pellentesque leo ex, finibus a nisi sed, lobortis semper metus. Praesent ac interdum nibh, non porttitor tellus. Nulla purus diam, fringilla eget ullamcorper ut, commodo vel ante. Mauris mauris arcu, varius nec pulvinar vel, finibus molestie enim. Duis ullamcorper tristique pretium. Nam pharetra, ipsum id tincidunt mattis, turpis orci posuere nulla, vel fermentum neque arcu eu sapien."
+    },
+    {
+      "id": "4",
+      "name": "Чистильщик металла, отливок, изделий и деталей",
+      "description": "desc4",
+      "instruction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer augue elit, convallis eget turpis vel, tempus fringilla lorem. Maecenas dictum elementum nisl, sit amet congue augue fringilla ac. Curabitur blandit maximus tellus, ut dignissim nunc volutpat sed. Aenean nec volutpat est. Sed condimentum libero non augue tincidunt venenatis. Mauris sit amet commodo enim. Proin laoreet dignissim dolor, sit amet accumsan mi suscipit id. Quisque quis egestas diam. Ut gravida sagittis tortor, eu convallis dui elementum vitae. Fusce at augue sed ligula vehicula accumsan in vel purus.\nProin et nibh risus. Sed condimentum varius urna eget viverra. Suspendisse elit turpis, pulvinar vel felis in, auctor sollicitudin neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer quis justo non libero facilisis euismod. Fusce in pulvinar mauris, at tincidunt arcu. In ligula purus, sagittis ac felis sed, scelerisque semper nunc. Morbi vitae pulvinar leo. Integer vestibulum vitae ante pretium iaculis.\nNullam ullamcorper nisl lacus, non vestibulum ligula consequat ut. Suspendisse a viverra elit, eu aliquet ipsum. Sed laoreet, arcu eu consectetur dignissim, arcu magna porttitor dui, in hendrerit tortor lorem vel felis. Cras congue sit amet nisi imperdiet consequat. Pellentesque sit amet nisl mauris. Vivamus et leo id diam tincidunt suscipit at ullamcorper justo. Quisque semper dui eu urna blandit eleifend. Pellentesque leo ex, finibus a nisi sed, lobortis semper metus. Praesent ac interdum nibh, non porttitor tellus. Nulla purus diam, fringilla eget ullamcorper ut, commodo vel ante. Mauris mauris arcu, varius nec pulvinar vel, finibus molestie enim. Duis ullamcorper tristique pretium. Nam pharetra, ipsum id tincidunt mattis, turpis orci posuere nulla, vel fermentum neque arcu eu sapien."
+    },
+    {
+      "id": "5",
+      "name": "Токарь",
+      "description": "desc4",
+      "instruction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer augue elit, convallis eget turpis vel, tempus fringilla lorem. Maecenas dictum elementum nisl, sit amet congue augue fringilla ac. Curabitur blandit maximus tellus, ut dignissim nunc volutpat sed. Aenean nec volutpat est. Sed condimentum libero non augue tincidunt venenatis. Mauris sit amet commodo enim. Proin laoreet dignissim dolor, sit amet accumsan mi suscipit id. Quisque quis egestas diam. Ut gravida sagittis tortor, eu convallis dui elementum vitae. Fusce at augue sed ligula vehicula accumsan in vel purus.\nProin et nibh risus. Sed condimentum varius urna eget viverra. Suspendisse elit turpis, pulvinar vel felis in, auctor sollicitudin neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer quis justo non libero facilisis euismod. Fusce in pulvinar mauris, at tincidunt arcu. In ligula purus, sagittis ac felis sed, scelerisque semper nunc. Morbi vitae pulvinar leo. Integer vestibulum vitae ante pretium iaculis.\nNullam ullamcorper nisl lacus, non vestibulum ligula consequat ut. Suspendisse a viverra elit, eu aliquet ipsum. Sed laoreet, arcu eu consectetur dignissim, arcu magna porttitor dui, in hendrerit tortor lorem vel felis. Cras congue sit amet nisi imperdiet consequat. Pellentesque sit amet nisl mauris. Vivamus et leo id diam tincidunt suscipit at ullamcorper justo. Quisque semper dui eu urna blandit eleifend. Pellentesque leo ex, finibus a nisi sed, lobortis semper metus. Praesent ac interdum nibh, non porttitor tellus. Nulla purus diam, fringilla eget ullamcorper ut, commodo vel ante. Mauris mauris arcu, varius nec pulvinar vel, finibus molestie enim. Duis ullamcorper tristique pretium. Nam pharetra, ipsum id tincidunt mattis, turpis orci posuere nulla, vel fermentum neque arcu eu sapien."
+    },
+    {
+      "id": "6",
+      "name": "Слесарь-сборщик металлоконструкций",
+      "description": "desc4",
+      "instruction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer augue elit, convallis eget turpis vel, tempus fringilla lorem. Maecenas dictum elementum nisl, sit amet congue augue fringilla ac. Curabitur blandit maximus tellus, ut dignissim nunc volutpat sed. Aenean nec volutpat est. Sed condimentum libero non augue tincidunt venenatis. Mauris sit amet commodo enim. Proin laoreet dignissim dolor, sit amet accumsan mi suscipit id. Quisque quis egestas diam. Ut gravida sagittis tortor, eu convallis dui elementum vitae. Fusce at augue sed ligula vehicula accumsan in vel purus.\nProin et nibh risus. Sed condimentum varius urna eget viverra. Suspendisse elit turpis, pulvinar vel felis in, auctor sollicitudin neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer quis justo non libero facilisis euismod. Fusce in pulvinar mauris, at tincidunt arcu. In ligula purus, sagittis ac felis sed, scelerisque semper nunc. Morbi vitae pulvinar leo. Integer vestibulum vitae ante pretium iaculis.\nNullam ullamcorper nisl lacus, non vestibulum ligula consequat ut. Suspendisse a viverra elit, eu aliquet ipsum. Sed laoreet, arcu eu consectetur dignissim, arcu magna porttitor dui, in hendrerit tortor lorem vel felis. Cras congue sit amet nisi imperdiet consequat. Pellentesque sit amet nisl mauris. Vivamus et leo id diam tincidunt suscipit at ullamcorper justo. Quisque semper dui eu urna blandit eleifend. Pellentesque leo ex, finibus a nisi sed, lobortis semper metus. Praesent ac interdum nibh, non porttitor tellus. Nulla purus diam, fringilla eget ullamcorper ut, commodo vel ante. Mauris mauris arcu, varius nec pulvinar vel, finibus molestie enim. Duis ullamcorper tristique pretium. Nam pharetra, ipsum id tincidunt mattis, turpis orci posuere nulla, vel fermentum neque arcu eu sapien."
+    }
+  ],
+  "departments": [
+    {
+      "id": "1",
+      "name": "name1",
+      "description": "desc2",
+      "contact": {
+        "tel": "tel1",
+        "office": "off1"
+      }
+    }
+  ],
+  "commonDocuments": [
+    {
+      "id": "1",
+      "name": "Политика безопасности",
+      "text": "Термины и определения\nАвтоматизированная система обработки информации - организационно-техническая система, представляющая собой совокупность следующих взаимосвязанных компонентов: технических средств обработки и передачи данных (средств вычислительной техники и связи), методов и алгоритмов обработки в виде соответствующего программного обеспечения, массивов (наборов, баз) данных на различных носителях, персонала и пользователей, объединенных по организационно-структурному, тематическому, технологическому или другим признакам для выполнения автоматизированной обработки данных с целью удовлетворения информационных потребностей потребителей информации;\nАвторизованный субъект доступа - субъект, которому предоставлены соответствующие права доступа к объектам системы (полномочия);\nАдминистратор безопасности - лицо или группа лиц, ответственных за обеспечение безопасности системы, за реализацию и непрерывность соблюдения установленных административных мер защиты и осуществляющих постоянную организационную поддержку функционирования применяемых физических и технических средств защиты;\nАтака на информационную систему - любое действие, выполняемое нарушителем, которое приводит к реализации угрозы, путем использования уязвимостей системы;\nБезопасность информации - защищенность информации от нежелательного (для соответствующих субъектов информационных отношений) ее разглашения (нарушения конфиденциальности), искажения (нарушения целостности), утраты или снижения степени доступности информации, а также незаконного ее тиражирования;\nБезопасность информационной технологии - защищенность технологического процесса переработки информации;\nБезопасность любого ресурса информационной системы - складывается из обеспечения трех его характеристик: конфиденциальности, целостности и доступности;\nКонфиденциальность компонента системы заключается в том, что он доступен только тем субъектам доступа (пользователям, программам, процессам), которым предоставлены на то соответствующие полномочия.\nЦелостность компонента предполагает, что он может быть модифицирован только субъектом, имеющим для этого соответствующие права. Целостность является гарантией корректности (неизменности, работоспособности) компонента в любой момент времени. Доступность компонента означает, что имеющий соответствующие полномочия субъект может в любое время без особых проблем получить доступ к необходимому компоненту системы (ресурсу);\nБезопасность субъектов информационных отношений - защищенность жизненно важных интересов субъектов информационных отношений от нанесения им материального, морального или иного вреда путем воздействия на информацию и/или средства ее обработки и передачи. Безопасность достигается проведением единой Концепции в области охраны и защиты важных ресурсов, системой мер экономического, организационного и иного характера, адекватных угрозам жизненно важным интересам."
+    }
+  ]
+}
