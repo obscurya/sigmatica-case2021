@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import { useStyles } from './Process.style';
 import { getAllProcessDataById } from '../../redux/actions';
+import { Tooltip } from '../Tooltip/Tooltip';
 
 export const Process = () => {
   const dispatch = useDispatch();
@@ -37,9 +38,6 @@ export const Process = () => {
         {process.description}
       </Typography>
       <Paper className={classes.tablePaper} variant="outlined">
-        {/* <Typography className={classes.tableTitle} variant="body1" component="div">
-          Используемые ресурсы
-        </Typography> */}
         <TableContainer>
           <Table className={classes.table} size="small">
             <TableHead>
@@ -49,19 +47,27 @@ export const Process = () => {
               </TableRow>
             </TableHead>
             <TableBody className={classes.tableBody}>
-              {process.resources.map(resource => (
+              {process.resources.map((resource, resourceIndex) => (
                 <TableRow key={resource.id}>
                   <TableCell component="th" scope="row">
                     {resource.name}
                   </TableCell>
                   <TableCell align="right">
                     {resource.providers.length
-                      ? resource.providers.map((provider, index) => (
-                          <React.Fragment key={index}>
-                            <Link className={classes.link} to={`/process-list/${provider.id}`}>
-                              {provider.name}
-                            </Link>
-                            {index < resource.providers.length && <br />}
+                      ? resource.providers.map((provider, providerIndex) => (
+                          <React.Fragment key={providerIndex}>
+                            {resourceIndex === 0 && providerIndex === 0 ? (
+                              <Tooltip guideStepIndex={3} placement="right-start">
+                                <Link className={classes.link} to={`/process-list/${provider.id}`}>
+                                  {provider.name}
+                                </Link>
+                              </Tooltip>
+                            ) : (
+                              <Link className={classes.link} to={`/process-list/${provider.id}`}>
+                                {provider.name}
+                              </Link>
+                            )}
+                            {providerIndex < resource.providers.length && <br />}
                           </React.Fragment>
                         ))
                       : 'Внешняя среда'}
@@ -73,9 +79,6 @@ export const Process = () => {
         </TableContainer>
       </Paper>
       <Paper className={classes.tablePaper} variant="outlined">
-        {/* <Typography className={classes.tableTitle} variant="body1" component="div">
-          Производимые продукты
-        </Typography> */}
         <TableContainer>
           <Table size="small">
             <TableHead>

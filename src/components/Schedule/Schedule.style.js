@@ -8,11 +8,18 @@ export const useStyles = makeStyles(theme => ({
   schedule: {
     maxWidth: 375,
     width: '100%',
+    padding: theme.spacing(1, 0, 7, 0),
+  },
+  scheduleTitle: {
+    padding: theme.spacing(0, 2),
+  },
+  scheduleDay: {
+    padding: theme.spacing(0, 2),
   },
   scheduleHeader: {
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(1, 2),
+    marginTop: theme.spacing(2),
   },
   day: {
     width: '100%',
@@ -21,14 +28,27 @@ export const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
   },
   process: {
-    margin: theme.spacing(1, 2),
+    display: 'flex',
+    alignItems: 'flex-end',
+    margin: theme.spacing(2, 0),
     padding: theme.spacing(1),
   },
+  processLeft: {
+    width: '100%',
+  },
+  processAvatar: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
   link: {
+    display: 'block',
     textDecoration: 'none',
     color: `${theme.palette.primary.main} !important`,
   },
   dayOff: {
     marginTop: theme.spacing(2),
+  },
+  subtitle: {
+    margin: theme.spacing(2, 0),
   },
 }));

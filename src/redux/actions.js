@@ -3,6 +3,8 @@ import slugify from 'slugify';
 import * as types from './types';
 
 export const fetchData = () => async dispatch => {
+  dispatch(showBackdrop());
+
   const data = (await axios.get(`${process.env.PUBLIC_URL}/static/data.json`)).data;
   const images = [
     'https://thumb.fakeface.rest/thumb_male_32_f80c2fab4d24b61e23135dd0e557840432eefe9d.jpg',
@@ -29,6 +31,7 @@ export const fetchData = () => async dispatch => {
 
   dispatch({ type: types.FETCH_DATA, payload: data });
   dispatch(setTechProcess());
+  dispatch(hideBackdrop());
 };
 
 export const findProcessById = processId => (_, getState) => {
@@ -245,18 +248,40 @@ export const authUser = authData => dispatch => {
 export const createScheduleByEmployeeId = employeeId => dispatch => {
   const processes = dispatch(findProcessesByEmployeeId(employeeId));
   const schedule = {
-    employeeId,
+    employee: dispatch(findEmployeeById(employeeId)),
     days: [],
   };
 
   for (let d = 0; d < 5; d++) {
-    schedule.days[d] = [];
+    const processes_ = [];
+    const consumers = [];
+    const providers = [];
 
     processes.forEach(process => {
       if (process.schedule.days.indexOf(d + 1) !== -1) {
-        schedule.days[d].push(process);
+        const process_ = { ...dispatch(getAllProcessDataById(process.id)) };
+
+        processes_.push(process_);
+
+        process_.products.forEach(product => {
+          product.consumers.forEach(consumer => {
+            if (consumer.employee) {
+              consumers.push({ ...dispatch(getAllProcessDataById(consumer.id)) });
+            }
+          });
+        });
+
+        process_.resources.forEach(resource => {
+          resource.providers.forEach(provider => {
+            if (provider.employee) {
+              providers.push({ ...dispatch(getAllProcessDataById(provider.id)) });
+            }
+          });
+        });
       }
     });
+
+    schedule.days[d] = { processes: processes_, providers, consumers };
   }
 
   return schedule;
@@ -265,4 +290,53 @@ export const createScheduleByEmployeeId = employeeId => dispatch => {
 export const findCommonDocumentById = documentId => (_, getState) => {
   const { app } = getState();
   return app.data.commonDocuments.find(document => document.id === documentId);
+};
+
+export const showBackdrop = () => (dispatch, getState) => {
+  const { app } = getState();
+
+  if (app.showBackdrop) return;
+
+  dispatch({ type: types.SHOW_BACKDROP });
+};
+
+export const hideBackdrop = () => (dispatch, getState) => {
+  const { app } = getState();
+
+  if (!app.showBackdrop) return;
+
+  dispatch({ type: types.HIDE_BACKDROP });
+};
+
+export const nextGuideStep = () => (dispatch, getState) => {
+  const { app } = getState();
+  const newIndex = app.guideStepIndex + 1;
+
+  if (newIndex === app.guide.length) {
+    dispatch(hideGuide());
+    dispatch(setGuideCompleted());
+    return;
+  }
+
+  dispatch({ type: types.SET_GUIDE_STEP_INDEX, payload: newIndex });
+};
+
+export const showGuide = () => dispatch => {
+  dispatch({ type: types.SHOW_GUIDE });
+};
+
+export const hideGuide = () => dispatch => {
+  dispatch({ type: types.HIDE_GUIDE });
+};
+
+export const hideGuideDialog = () => dispatch => {
+  dispatch({ type: types.HIDE_GUIDE_DIALOG });
+};
+
+export const setGuideCompleted = () => dispatch => {
+  dispatch({ type: types.SET_GUIDE_COMPLETED });
+};
+
+export const setGuideNotCompleted = () => dispatch => {
+  dispatch({ type: types.SET_GUIDE_NOT_COMPLETED });
 };

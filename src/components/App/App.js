@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { authUser, fetchData } from '../../redux/actions';
-import { Container } from '@material-ui/core';
+import { Container, Backdrop, CircularProgress } from '@material-ui/core';
 import { useStyles } from './App.style';
 import { LeftDrawer } from '../LeftDrawer/LeftDrawer';
 import { Header } from '../Header/Header';
@@ -15,6 +15,9 @@ import { Schedule } from '../Schedule/Schedule';
 import { Specialty } from '../Specialty/Specialty';
 import { CommonDocuments } from '../CommonDocuments/CommonDocuments';
 import { CommonDocument } from '../CommonDocument/CommonDocument';
+import { GuideDialog } from '../GuideDialog/GuideDialog';
+import { GuideCompletedDialog } from '../GuideCompletedDialog/GuideCompletedDialog';
+import { Atom } from '../Atom/Atom';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -41,38 +44,48 @@ export const App = () => {
       <Header toggleDrawer={toggleDrawer} />
       <div className={classes.toolbar} />
       {appState.user ? (
-        <Switch>
-          <Route exact path="/">
-            <Redirect to={`/schedule/${appState.user.id}`} />
-          </Route>
-          <Route exact path={'/profile/:employeeId'}>
-            <Profile />
-          </Route>
-          <Route exact path={'/schedule/:employeeId'}>
-            <Schedule />
-          </Route>
-          <Route exact path={'/process-list'}>
-            <ProcessList />
-          </Route>
-          <Route exact path={'/process-list/:processId'}>
-            <Process />
-          </Route>
-          <Route exact path={'/employees'}>
-            <Employees />
-          </Route>
-          <Route exact path={'/common-documents'}>
-            <CommonDocuments />
-          </Route>
-          <Route exact path={'/common-documents/:documentId'}>
-            <CommonDocument />
-          </Route>
-          <Route exact path={'/specialties/:specialtyId'}>
-            <Specialty />
-          </Route>
-        </Switch>
+        <>
+          <Switch>
+            <Route exact path="/">
+              <Redirect to={`/schedule/${appState.user.id}`} />
+            </Route>
+            <Route exact path={'/profile/:employeeId'}>
+              <Profile />
+            </Route>
+            <Route exact path={'/schedule/:employeeId'}>
+              <Schedule />
+            </Route>
+            <Route exact path={'/process-list'}>
+              <ProcessList />
+            </Route>
+            <Route exact path={'/process-list/:processId'}>
+              <Process />
+            </Route>
+            <Route exact path={'/employees'}>
+              <Employees />
+            </Route>
+            <Route exact path={'/common-documents'}>
+              <CommonDocuments />
+            </Route>
+            <Route exact path={'/common-documents/:documentId'}>
+              <CommonDocument />
+            </Route>
+            <Route exact path={'/specialties/:specialtyId'}>
+              <Specialty />
+            </Route>
+            <Route exact path={'/atom'}>
+              <Atom />
+            </Route>
+          </Switch>
+          <GuideDialog />
+          <GuideCompletedDialog />
+        </>
       ) : (
         <Auth />
       )}
+      <Backdrop className={classes.backdrop} open={appState.showBackdrop}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Container>
   );
 };

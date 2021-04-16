@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authUser } from '../../redux/actions';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { useStyles } from './Auth.style';
 
@@ -12,11 +12,11 @@ export const Auth = () => {
 
   const [authData, setAuthData] = useState({
     email: {
-      value: '',
+      value: 'ivanov.ivan@rosatom.ru',
       error: '',
     },
     password: {
-      value: '',
+      value: 'qwerty1',
       error: '',
     },
   });
@@ -62,7 +62,14 @@ export const Auth = () => {
       </Button>
       <br />
       <Alert className={classes.alert} severity="info" variant="outlined">
-        ivanov.ivan@rosatom.ru / qwerty1
+        <Typography variant="body2" gutterBottom>
+          Корректная почта и пароль уже введены в форму, но на всякий случай продублируем:
+        </Typography>
+        <Typography variant="subtitle2">
+          ivanov.ivan@rosatom.ru
+          <br />
+          qwerty1
+        </Typography>
       </Alert>
     </div>
   ) : null;

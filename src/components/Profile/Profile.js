@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, CardContent, CardActions, Typography, CardMedia, IconButton, Collapse, Button } from '@material-ui/core';
-import { AlternateEmailOutlined, Phone, ExpandMore, ExpandLess } from '@material-ui/icons';
+import { Card, CardContent, CardActions, Typography, IconButton, Collapse, Button, Avatar } from '@material-ui/core';
+import { Phone, ExpandMore, ExpandLess, MailOutline, Schedule } from '@material-ui/icons';
 import { authUser, getAllEmployeeDataById } from '../../redux/actions';
 import { useStyles } from './Profile.style';
 
@@ -16,10 +16,6 @@ export const Profile = () => {
 
   const toggleProcessesOpened = () => {
     setProcessesOpened(!processesOpened);
-  };
-
-  const formatPhone = phone => {
-    return `${phone[0]} (${phone.slice(1, 4)}) ${phone.slice(4, 7)}-${phone.slice(7, 9)}-${phone.slice(9)}`;
   };
 
   useEffect(() => {
@@ -43,32 +39,33 @@ export const Profile = () => {
           Выйти из аккаунта
         </Button>
       )}
-      <Card className={classes.card}>
-        <CardMedia className={classes.media} image={employee.image} />
+      <div className={classes.profileImage}>
+        <Avatar className={classes.avatar} src={employee.image} />
+        <div className={classes.buttons}>
+          <IconButton component="a" href={`mailto:${employee.contacts.email}`} style={{ background: '#42a5f5' }}>
+            <MailOutline />
+          </IconButton>
+          <IconButton component="a" href={`tel:${employee.contacts.phone}`} style={{ background: '#66bb6a' }}>
+            <Phone />
+          </IconButton>
+          <IconButton component={Link} to={`/schedule/${employee.id}`} style={{ background: '#ffa726' }}>
+            <Schedule />
+          </IconButton>
+        </div>
+      </div>
+      <Card className={classes.card} variant="outlined">
         <CardContent>
-          <Typography gutterBottom variant="h6">
+          <Typography className={classes.name} variant="h6">
             {employee.name}
           </Typography>
           <Typography
             className={classes.linkSpecialty}
             variant="body2"
-            color="textSecondary"
             component={Link}
             to={`/specialties/${employee.specialty.id}`}
-            gutterBottom
           >
             {employee.specialty.name}
           </Typography>
-          <div className={classes.contacts}>
-            <Typography className={classes.contact} variant="body2" color="textSecondary" gutterBottom>
-              <AlternateEmailOutlined fontSize="small" />
-              <span>{employee.contacts.email}</span>
-            </Typography>
-            <Typography className={classes.contact} variant="body2" color="textSecondary">
-              <Phone fontSize="small" />
-              <span>{formatPhone(employee.contacts.phone)}</span>
-            </Typography>
-          </div>
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Typography variant="body2">Технологические процессы</Typography>
